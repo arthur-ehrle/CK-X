@@ -31,11 +31,13 @@ services:
 
   # Web Application (not directly exposed to users)
   webapp:
-    image: nishanb/ck-x-simulator-webapp:latest
+    image: nishanb/ck-x-simulator-webapp:cns
     build:
       context: ./app
     expose:
       - "3000"  # Only exposed to internal network
+    volumes:
+      - ./app/public/index.html:/usr/share/nginx/html/index.html # for index.html modifications
     environment:
       - VNC_SERVICE_HOST=remote-desktop
       - VNC_SERVICE_PORT=6901
@@ -94,7 +96,7 @@ services:
     image: nishanb/ck-x-simulator-jumphost:latest
     build:
       context: ./jumphost
-    hostname: ckad9999
+    hostname: cns-srv-001
     privileged: true
     # No external port mappings - only accessible internally
     expose:
@@ -203,6 +205,9 @@ services:
     hostname: facilitator
     expose:
       - "3000"
+    volumes:
+      - ./facilitator/assets/exams/labs.json:/usr/src/app/assets/exams/labs.json
+      - ./facilitator/assets/exams/CNS:/usr/src/app/assets/exams/CNS
     environment:
       - PORT=3000
       - NODE_ENV=prod
