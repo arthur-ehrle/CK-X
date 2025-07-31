@@ -245,3 +245,8 @@ networks:
 
 volumes:
   kube-config:  # Shared volume for Kubernetes configuration
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./

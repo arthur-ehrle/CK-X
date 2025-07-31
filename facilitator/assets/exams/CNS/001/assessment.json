@@ -21,7 +21,7 @@
       "namespace": "default",
       "machineHostname": "cns-srv-001",
       "question": "Create a deployment named `deploy-1` in the `internal` namespace using the `nginx` image.\nScale the deployment to 3 pods.\n\nNow create a deployment named `deploy-2` in the `internal` namespace using the `nginx` image. The container should be named `c1`.",
-      "concepts": ["docker", "containers", "port mapping", "environment variables"],
+      "concepts": ["pods", "images", "namespaces", "deployments"],
       "verification": [
         {
           "id": "1",
@@ -36,36 +36,6 @@
           "verificationScriptFile": "q2_s2_validate_deployment2.sh",
           "expectedOutput": "0",
           "weightage": 2
-        }
-      ]
-    },
-    {
-      "id": "3",
-      "namespace": "default",
-      "machineHostname": "cns-srv-001",
-      "question": "Create a Docker volume named `data-volume` and then run a container named `volume-test` using the `alpine:latest` image that:\n\n- Mounts the `data-volume` to `/app/data` in the container\n- Creates a file called `/app/data/test.txt` with the content 'Docker volumes test'\n- Exits after completing these actions",
-      "concepts": ["docker", "volumes", "data persistence"],
-      "verification": [
-        {
-          "id": "1",
-          "description": "Volume data-volume exists",
-          "verificationScriptFile": "q3_s1_validate_volume.sh",
-          "expectedOutput": "0",
-          "weightage": 2
-        },
-        {
-          "id": "2",
-          "description": "Container was created with correct mount",
-          "verificationScriptFile": "q3_s2_validate_container_mount.sh",
-          "expectedOutput": "0",
-          "weightage": 2
-        },
-        {
-          "id": "3",
-          "description": "File exists in the volume with correct content",
-          "verificationScriptFile": "q3_s3_validate_file_content.sh",
-          "expectedOutput": "0",
-          "weightage": 4
         }
       ]
     }

@@ -3,3 +3,5 @@
 
 # Ensure nginx:alpine image is available
 docker pull httpd &> /dev/null
+
+exit 0

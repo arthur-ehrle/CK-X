@@ -6,7 +6,7 @@
 
 POD_NAME="testpod"
 NAMESPACE="cns-lab"
-$EXPECTED_IMAGE="httpd"
+EXPECTED_IMAGE="httpd"
 
 
 # Check if correct image is used
@@ -23,6 +23,6 @@ else
   echo "❌ Deployment '$POD_NAME' not found in namespace '$NAMESPACE'"
   exit 1
 fi
-
+exit 0 
 
 
